@@ -83,13 +83,16 @@ function PlantLayout() {
 }
 
 function DevControls() {
-  const client = getPlantClient();
+  const [mounted, setMounted] = useState(false);
   const [speed, setSpeed] = useState(1);
   useEffect(() => {
-    setSpeed(client.controls?.getSpeed() ?? 1);
-  }, [client]);
+    setMounted(true);
+    const c = getPlantClient();
+    setSpeed(c.controls?.getSpeed() ?? 1);
+  }, []);
 
-  if (!client.controls) return null;
+  if (!mounted) return null;
+  const client = getPlantClient();
   return (
     <div className="hidden items-center gap-2 md:flex">
       <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
