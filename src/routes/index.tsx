@@ -48,7 +48,7 @@ function Index() {
               className="group rounded-md border border-border bg-card p-6 transition-colors hover:border-primary/60"
             >
               <t.icon
-                className={`h-5 w-5 ${t.accent ? "text-primary" : "text-muted-foreground"}`}
+                className={`h-5 w-5 ${"accent" in t && t.accent ? "text-primary" : "text-muted-foreground"}`}
                 strokeWidth={1.5}
               />
               <h2 className="mt-12 font-serif text-3xl text-foreground">
