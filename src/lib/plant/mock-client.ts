@@ -320,11 +320,6 @@ export class MockPlantClient implements PlantClient {
               this.wave2.stage = "translate";
               this.wave2.started_at = Date.now();
             }
-            job.gpuStagesDone.gen = true;
-            this.addArtifact(job, "mcq", model);
-            this.emit("wave2.gen.done", job, { model }, { model_version: model });
-            this.wave2.stage = "translate";
-            this.wave2.started_at = Date.now();
           } else if (stage === "translate") {
             job.gpuStagesDone.translate = true;
             this.addArtifact(job, "translation", model);
