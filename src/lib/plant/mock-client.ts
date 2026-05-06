@@ -313,7 +313,12 @@ export class MockPlantClient implements PlantClient {
               this.recentErrors.push(Date.now());
               this.emit("wave3.validate.failed", job, { stage: "gen", reason: "model_refused" });
               this.releaseGpu(job);
-              continue;
+            } else {
+              job.gpuStagesDone.gen = true;
+              this.addArtifact(job, "mcq", model);
+              this.emit("wave2.gen.done", job, { model }, { model_version: model });
+              this.wave2.stage = "translate";
+              this.wave2.started_at = Date.now();
             }
             job.gpuStagesDone.gen = true;
             this.addArtifact(job, "mcq", model);
