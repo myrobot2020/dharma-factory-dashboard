@@ -112,13 +112,13 @@ function DevControls() {
       </select>
       <button
         onClick={() => client.controls!.spawnSutta()}
-        className="h-7 rounded-md border border-border px-2 font-mono text-xs text-muted-foreground hover:text-foreground"
+        className="h-7 whitespace-nowrap rounded-md border border-border px-2 font-mono text-xs text-muted-foreground hover:text-foreground"
       >
         + sutta
       </button>
       <button
         onClick={() => client.controls!.failNextGen()}
-        className="h-7 rounded-md border border-border px-2 font-mono text-xs text-muted-foreground hover:text-foreground"
+        className="h-7 whitespace-nowrap rounded-md border border-border px-2 font-mono text-xs text-muted-foreground hover:text-foreground"
       >
         fail gen
       </button>
