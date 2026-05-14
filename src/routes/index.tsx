@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Trees, Sparkles, User, Activity } from "lucide-react";
 import heroImg from "@/assets/dama-hero.jpg";
+import { useOnboardingGuard } from "@/lib/onboarding/guard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,6 +22,7 @@ const tiles = [
 ] as const;
 
 function Index() {
+  useOnboardingGuard();
   return (
     <div className="min-h-screen bg-background">
       <header className="flex items-center justify-center py-6">

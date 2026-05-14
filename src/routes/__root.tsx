@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { OnboardingProvider } from "@/lib/onboarding/state";
 
 import appCss from "../styles.css?url";
 
@@ -65,5 +66,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <OnboardingProvider>
+      <Outlet />
+    </OnboardingProvider>
+  );
 }
