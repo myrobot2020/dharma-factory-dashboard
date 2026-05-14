@@ -9,16 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as PlantRouteImport } from './routes/plant'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WelcomeIndexRouteImport } from './routes/welcome.index'
 import { Route as PlantIndexRouteImport } from './routes/plant.index'
+import { Route as OnboardingIndexRouteImport } from './routes/onboarding.index'
+import { Route as WelcomeValueRouteImport } from './routes/welcome.value'
+import { Route as WelcomePreviewRouteImport } from './routes/welcome.preview'
+import { Route as WelcomeInstallRouteImport } from './routes/welcome.install'
 import { Route as PlantWavesRouteImport } from './routes/plant.waves'
 import { Route as PlantHdbRouteImport } from './routes/plant.hdb'
+import { Route as OnboardingReasonRouteImport } from './routes/onboarding.reason'
+import { Route as OnboardingPermissionsRouteImport } from './routes/onboarding.permissions'
+import { Route as OnboardingIntentRouteImport } from './routes/onboarding.intent'
 import { Route as PlantSuttaJobIdRouteImport } from './routes/plant.sutta.$jobId'
 
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlantRoute = PlantRouteImport.update({
   id: '/plant',
   path: '/plant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -26,10 +46,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WelcomeIndexRoute = WelcomeIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WelcomeRoute,
+} as any)
 const PlantIndexRoute = PlantIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PlantRoute,
+} as any)
+const OnboardingIndexRoute = OnboardingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OnboardingRoute,
+} as any)
+const WelcomeValueRoute = WelcomeValueRouteImport.update({
+  id: '/value',
+  path: '/value',
+  getParentRoute: () => WelcomeRoute,
+} as any)
+const WelcomePreviewRoute = WelcomePreviewRouteImport.update({
+  id: '/preview',
+  path: '/preview',
+  getParentRoute: () => WelcomeRoute,
+} as any)
+const WelcomeInstallRoute = WelcomeInstallRouteImport.update({
+  id: '/install',
+  path: '/install',
+  getParentRoute: () => WelcomeRoute,
 } as any)
 const PlantWavesRoute = PlantWavesRouteImport.update({
   id: '/waves',
@@ -41,6 +86,21 @@ const PlantHdbRoute = PlantHdbRouteImport.update({
   path: '/hdb',
   getParentRoute: () => PlantRoute,
 } as any)
+const OnboardingReasonRoute = OnboardingReasonRouteImport.update({
+  id: '/reason',
+  path: '/reason',
+  getParentRoute: () => OnboardingRoute,
+} as any)
+const OnboardingPermissionsRoute = OnboardingPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => OnboardingRoute,
+} as any)
+const OnboardingIntentRoute = OnboardingIntentRouteImport.update({
+  id: '/intent',
+  path: '/intent',
+  getParentRoute: () => OnboardingRoute,
+} as any)
 const PlantSuttaJobIdRoute = PlantSuttaJobIdRouteImport.update({
   id: '/sutta/$jobId',
   path: '/sutta/$jobId',
@@ -49,61 +109,138 @@ const PlantSuttaJobIdRoute = PlantSuttaJobIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRouteWithChildren
   '/plant': typeof PlantRouteWithChildren
+  '/welcome': typeof WelcomeRouteWithChildren
+  '/onboarding/intent': typeof OnboardingIntentRoute
+  '/onboarding/permissions': typeof OnboardingPermissionsRoute
+  '/onboarding/reason': typeof OnboardingReasonRoute
   '/plant/hdb': typeof PlantHdbRoute
   '/plant/waves': typeof PlantWavesRoute
+  '/welcome/install': typeof WelcomeInstallRoute
+  '/welcome/preview': typeof WelcomePreviewRoute
+  '/welcome/value': typeof WelcomeValueRoute
+  '/onboarding/': typeof OnboardingIndexRoute
   '/plant/': typeof PlantIndexRoute
+  '/welcome/': typeof WelcomeIndexRoute
   '/plant/sutta/$jobId': typeof PlantSuttaJobIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/onboarding/intent': typeof OnboardingIntentRoute
+  '/onboarding/permissions': typeof OnboardingPermissionsRoute
+  '/onboarding/reason': typeof OnboardingReasonRoute
   '/plant/hdb': typeof PlantHdbRoute
   '/plant/waves': typeof PlantWavesRoute
+  '/welcome/install': typeof WelcomeInstallRoute
+  '/welcome/preview': typeof WelcomePreviewRoute
+  '/welcome/value': typeof WelcomeValueRoute
+  '/onboarding': typeof OnboardingIndexRoute
   '/plant': typeof PlantIndexRoute
+  '/welcome': typeof WelcomeIndexRoute
   '/plant/sutta/$jobId': typeof PlantSuttaJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/onboarding': typeof OnboardingRouteWithChildren
   '/plant': typeof PlantRouteWithChildren
+  '/welcome': typeof WelcomeRouteWithChildren
+  '/onboarding/intent': typeof OnboardingIntentRoute
+  '/onboarding/permissions': typeof OnboardingPermissionsRoute
+  '/onboarding/reason': typeof OnboardingReasonRoute
   '/plant/hdb': typeof PlantHdbRoute
   '/plant/waves': typeof PlantWavesRoute
+  '/welcome/install': typeof WelcomeInstallRoute
+  '/welcome/preview': typeof WelcomePreviewRoute
+  '/welcome/value': typeof WelcomeValueRoute
+  '/onboarding/': typeof OnboardingIndexRoute
   '/plant/': typeof PlantIndexRoute
+  '/welcome/': typeof WelcomeIndexRoute
   '/plant/sutta/$jobId': typeof PlantSuttaJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/onboarding'
     | '/plant'
+    | '/welcome'
+    | '/onboarding/intent'
+    | '/onboarding/permissions'
+    | '/onboarding/reason'
     | '/plant/hdb'
     | '/plant/waves'
+    | '/welcome/install'
+    | '/welcome/preview'
+    | '/welcome/value'
+    | '/onboarding/'
     | '/plant/'
+    | '/welcome/'
     | '/plant/sutta/$jobId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/plant/hdb' | '/plant/waves' | '/plant' | '/plant/sutta/$jobId'
+  to:
+    | '/'
+    | '/onboarding/intent'
+    | '/onboarding/permissions'
+    | '/onboarding/reason'
+    | '/plant/hdb'
+    | '/plant/waves'
+    | '/welcome/install'
+    | '/welcome/preview'
+    | '/welcome/value'
+    | '/onboarding'
+    | '/plant'
+    | '/welcome'
+    | '/plant/sutta/$jobId'
   id:
     | '__root__'
     | '/'
+    | '/onboarding'
     | '/plant'
+    | '/welcome'
+    | '/onboarding/intent'
+    | '/onboarding/permissions'
+    | '/onboarding/reason'
     | '/plant/hdb'
     | '/plant/waves'
+    | '/welcome/install'
+    | '/welcome/preview'
+    | '/welcome/value'
+    | '/onboarding/'
     | '/plant/'
+    | '/welcome/'
     | '/plant/sutta/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OnboardingRoute: typeof OnboardingRouteWithChildren
   PlantRoute: typeof PlantRouteWithChildren
+  WelcomeRoute: typeof WelcomeRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plant': {
       id: '/plant'
       path: '/plant'
       fullPath: '/plant'
       preLoaderRoute: typeof PlantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -113,12 +250,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/welcome/': {
+      id: '/welcome/'
+      path: '/'
+      fullPath: '/welcome/'
+      preLoaderRoute: typeof WelcomeIndexRouteImport
+      parentRoute: typeof WelcomeRoute
+    }
     '/plant/': {
       id: '/plant/'
       path: '/'
       fullPath: '/plant/'
       preLoaderRoute: typeof PlantIndexRouteImport
       parentRoute: typeof PlantRoute
+    }
+    '/onboarding/': {
+      id: '/onboarding/'
+      path: '/'
+      fullPath: '/onboarding/'
+      preLoaderRoute: typeof OnboardingIndexRouteImport
+      parentRoute: typeof OnboardingRoute
+    }
+    '/welcome/value': {
+      id: '/welcome/value'
+      path: '/value'
+      fullPath: '/welcome/value'
+      preLoaderRoute: typeof WelcomeValueRouteImport
+      parentRoute: typeof WelcomeRoute
+    }
+    '/welcome/preview': {
+      id: '/welcome/preview'
+      path: '/preview'
+      fullPath: '/welcome/preview'
+      preLoaderRoute: typeof WelcomePreviewRouteImport
+      parentRoute: typeof WelcomeRoute
+    }
+    '/welcome/install': {
+      id: '/welcome/install'
+      path: '/install'
+      fullPath: '/welcome/install'
+      preLoaderRoute: typeof WelcomeInstallRouteImport
+      parentRoute: typeof WelcomeRoute
     }
     '/plant/waves': {
       id: '/plant/waves'
@@ -134,6 +306,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlantHdbRouteImport
       parentRoute: typeof PlantRoute
     }
+    '/onboarding/reason': {
+      id: '/onboarding/reason'
+      path: '/reason'
+      fullPath: '/onboarding/reason'
+      preLoaderRoute: typeof OnboardingReasonRouteImport
+      parentRoute: typeof OnboardingRoute
+    }
+    '/onboarding/permissions': {
+      id: '/onboarding/permissions'
+      path: '/permissions'
+      fullPath: '/onboarding/permissions'
+      preLoaderRoute: typeof OnboardingPermissionsRouteImport
+      parentRoute: typeof OnboardingRoute
+    }
+    '/onboarding/intent': {
+      id: '/onboarding/intent'
+      path: '/intent'
+      fullPath: '/onboarding/intent'
+      preLoaderRoute: typeof OnboardingIntentRouteImport
+      parentRoute: typeof OnboardingRoute
+    }
     '/plant/sutta/$jobId': {
       id: '/plant/sutta/$jobId'
       path: '/sutta/$jobId'
@@ -143,6 +336,24 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface OnboardingRouteChildren {
+  OnboardingIntentRoute: typeof OnboardingIntentRoute
+  OnboardingPermissionsRoute: typeof OnboardingPermissionsRoute
+  OnboardingReasonRoute: typeof OnboardingReasonRoute
+  OnboardingIndexRoute: typeof OnboardingIndexRoute
+}
+
+const OnboardingRouteChildren: OnboardingRouteChildren = {
+  OnboardingIntentRoute: OnboardingIntentRoute,
+  OnboardingPermissionsRoute: OnboardingPermissionsRoute,
+  OnboardingReasonRoute: OnboardingReasonRoute,
+  OnboardingIndexRoute: OnboardingIndexRoute,
+}
+
+const OnboardingRouteWithChildren = OnboardingRoute._addFileChildren(
+  OnboardingRouteChildren,
+)
 
 interface PlantRouteChildren {
   PlantHdbRoute: typeof PlantHdbRoute
@@ -160,9 +371,28 @@ const PlantRouteChildren: PlantRouteChildren = {
 
 const PlantRouteWithChildren = PlantRoute._addFileChildren(PlantRouteChildren)
 
+interface WelcomeRouteChildren {
+  WelcomeInstallRoute: typeof WelcomeInstallRoute
+  WelcomePreviewRoute: typeof WelcomePreviewRoute
+  WelcomeValueRoute: typeof WelcomeValueRoute
+  WelcomeIndexRoute: typeof WelcomeIndexRoute
+}
+
+const WelcomeRouteChildren: WelcomeRouteChildren = {
+  WelcomeInstallRoute: WelcomeInstallRoute,
+  WelcomePreviewRoute: WelcomePreviewRoute,
+  WelcomeValueRoute: WelcomeValueRoute,
+  WelcomeIndexRoute: WelcomeIndexRoute,
+}
+
+const WelcomeRouteWithChildren =
+  WelcomeRoute._addFileChildren(WelcomeRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OnboardingRoute: OnboardingRouteWithChildren,
   PlantRoute: PlantRouteWithChildren,
+  WelcomeRoute: WelcomeRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
