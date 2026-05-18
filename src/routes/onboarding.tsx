@@ -43,7 +43,9 @@ function OnboardingLayout() {
     >
       {showChrome ? <ProgressDots total={order.length} current={idx} /> : null}
       <main className="flex flex-1 flex-col pb-8">
-        <Outlet />
+        <ZenTransition>
+          <Outlet />
+        </ZenTransition>
       </main>
     </MobileFrame>
   );
