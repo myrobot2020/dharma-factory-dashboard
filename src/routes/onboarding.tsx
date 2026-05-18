@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, useNavigate, useRouterState } from "@tanstack/react-router";
 import { MobileFrame } from "@/components/onboarding/MobileFrame";
 import { ProgressDots } from "@/components/onboarding/ProgressDots";
+import { ZenTransition } from "@/components/onboarding/ZenTransition";
 import { useOnboarding } from "@/lib/onboarding/state";
 
 const order = ["/onboarding", "/onboarding/intent", "/onboarding/reason", "/onboarding/permissions"];
@@ -42,7 +43,9 @@ function OnboardingLayout() {
     >
       {showChrome ? <ProgressDots total={order.length} current={idx} /> : null}
       <main className="flex flex-1 flex-col pb-8">
-        <Outlet />
+        <ZenTransition>
+          <Outlet />
+        </ZenTransition>
       </main>
     </MobileFrame>
   );

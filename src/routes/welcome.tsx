@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, useRouterState } from "@tanstack/react-router";
 import { MobileFrame } from "@/components/onboarding/MobileFrame";
 import { ProgressDots } from "@/components/onboarding/ProgressDots";
+import { ZenTransition } from "@/components/onboarding/ZenTransition";
 
 const order = ["/welcome", "/welcome/value", "/welcome/preview", "/welcome/install"];
 
@@ -15,7 +16,9 @@ function WelcomeLayout() {
     <MobileFrame>
       <ProgressDots total={order.length} current={idx} />
       <main className="flex flex-1 flex-col pb-8">
-        <Outlet />
+        <ZenTransition>
+          <Outlet />
+        </ZenTransition>
       </main>
     </MobileFrame>
   );
